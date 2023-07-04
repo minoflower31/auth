@@ -15,12 +15,12 @@ public class CommonResponse<T> {
 
     }
 
-    private CommonResponse(String code, String message) {
+    public CommonResponse(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    private CommonResponse(String code, String message, T data) {
+    public CommonResponse(String code, String message, T data) {
         this(code, message);
         this.data = data;
     }
