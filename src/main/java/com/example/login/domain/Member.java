@@ -1,5 +1,6 @@
 package com.example.login.domain;
 
+import com.example.login.global.enums.MemberRole;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,8 +18,12 @@ public class Member {
 
     private String password;
 
-    public Member(String loginId, String password) {
+    @Enumerated(EnumType.STRING)
+    private MemberRole role;
+
+    public Member(String loginId, String password, MemberRole role) {
         this.loginId = loginId;
         this.password = password;
+        this.role = role;
     }
 }
