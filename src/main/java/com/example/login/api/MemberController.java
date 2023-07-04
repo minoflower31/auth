@@ -1,8 +1,10 @@
 package com.example.login.api;
 
 import com.example.login.application.MemberService;
+import com.example.login.dto.request.CreateMemberRequest;
 import com.example.login.global.util.response.CommonResponse;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +24,8 @@ public class MemberController {
     }
 
     @PostMapping("/sign-up")
-    public CommonResponse<Void> signUp() {
-        return null;
+    public CommonResponse<Void> signUp(@RequestBody CreateMemberRequest request) {
+        memberService.save(request.loginId(), request.password());
+        return CommonResponse.success();
     }
 }
